@@ -1,0 +1,31 @@
+<html>
+<style>
+#checkoutbutton {
+  margin-top:0.1em;
+  border-radius: 4px;
+  background-color: lightblue;
+  height:10px;
+  width:10%;
+  border: 1px solid grey;
+  padding: 2px;
+}
+
+#checkoutbutton:hover {opacity: 0.5; }
+
+A:link {color: black; text-decoration:none}
+A:visited {color: black; text-decoration:none}
+A:hover {text-decoration:underline; opacity: 0.5; }
+</style>
+<body bgcolor="white" text="black">
+<center>
+<p><h1><u>VM DEPLOYMENT</u></h1></p>
+</center>
+<p align="right" id="checkoutbutton">
+<br>
+<a text-align="right" href="http://10.127.150.39:8000/click" >Refresh</a>
+</p>
+{% block sidebar %}
+  {% include "side_1.html" %}
+{% endblock sidebar %}
+</body>
+</html>

@@ -1,0 +1,81 @@
+<script>
+function test(a)
+{ 
+    myWindow=window.open(a,"Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,");
+}
+
+
+</script>
+
+
+<style type="text/css"> 
+.styled-button-5 {
+	background-color:light blue;
+	color:black;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:15px;
+	line-height:25px;
+	border-radius:16px;
+	-webkit-border-radius:18px;
+	-moz-border-radius:18px;
+	border:0;
+	text-shadow:#C17C3A 0 -1px 0;
+	width:100px;
+	height:25px
+}      
+
+table,tr,td
+{
+ border:1px solid black;
+ border-color:blue;
+ background-color:white;
+}
+
+th
+{
+ background-color:grey;color:white;
+}          
+</style>
+<center>
+<table width="1000px" border="1" cellpadding="2" cellspacing="2">
+
+
+{% if test|length  == 0 %}
+  <br><br><h2>No VMs are Currently Deployed!!!</h2>
+{% else %}
+  <tr>
+    <th>IMAGE</th>
+    <th>CREATION TIME</th>
+    <th>UT</th>
+    <th>FT</th>
+    <th>STATUS</th>
+    <th>BUILD</th>
+    <th>DEPLOYED VM IP</th>
+  </tr>
+
+{% for t in test %}
+  <tr>
+    {% if t.4 == 'running' %}
+    <td><center>{{ t.1 }}</center></td>
+    <td><center>{{ t.2 }} </center></td>
+    <td><center><a href="#" onClick='window.open("{{ t.5 }}")'>UT</a></center></td>
+    <td><center><a href="#" onClick='window.open("{{ t.6 }}")'>FT</a></center></td>
+    <td><center>{{ t.4 }} </center></td>
+    <td><center><form action="http://10.127.150.56:8888/{{ t.1 }}"><input type="submit" value="Terminate" style="line-height:30px; width:110px;margin-top:1em"/></form></center></td>
+    <td><center><a href="#" onClick='test("http://{{ t.7.strip }}:1234")'>{{ t.7 }}</a></center></td>
+    {% else %}
+    <td><center>{{ t.1 }}</center></td>
+    <td><center>{{ t.2 }} </center></td>
+    <td><center><a href="#" onClick='window.open("{{ t.5 }}")'>UT</a></center></td>
+    <td><center><a href="#" onClick='window.open("{{ t.6 }}")'>FT</a></center></td>
+    <td><center>{{ t.4 }}</center></td>
+    <td><center><form action="http://10.127.150.56:8888/{{ t.1 }}"><input type="submit" value="Deploy" style="line-height:30px; width:110px;margin-top:1em"/></form></center></td>
+    <td><center>{{ t.7 }}</center></td>
+
+   {% endif %}
+    </tr><br>
+        
+{% endfor %}
+{% endif %}
+</table>
+</center>

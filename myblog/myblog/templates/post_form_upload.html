@@ -1,0 +1,84 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div  class="page">
+
+<h3>One Click Cloud Deployment</h3>
+
+<form action='/process_form_data' method='post'>{% csrf_token %}
+
+<p id="ext_mgmt_iface">ext_mgmt_iface : {{form.ext_mgmt_dd}}<p>
+
+<p id="mgmt_subnet">mgmt_subnet_mask : {{form.mgmt_subnet_dd}}<p>
+
+<p id="ext_ip">ext_mgmt_ip:<input type="text" name="ext_ip_text"></p>
+
+<p id="config_debug_mode">CONFIG_DEBUG_MODE : {{form.CONFIG_DEBUG_dd}}<p>
+
+<p id="network_redundancy_dd">network_redundancy : {{form.network_redundancy_dd}}<p>
+
+<p id="cinder_volume_group">cinder_volume_group : {{form.cinder_volume_dd}}<p>
+
+<p id="cinder_vg_percentage_on_hdd">cinder_vg_percentage_on_hdd : {{form.cinder_vg_percentag_dd}}<p>
+
+<p id="all_in_one_node_deployment">all_in_one_node_deployment : {{form.all_in_one_node_dd}}<p>
+
+<p id="neutron_ovs_tenant_network_type">neutron_ovs_tenant_network_type : {{form.neutron_ovs_tenant_dd}}<p>
+
+<p id="neutron_ovs_vlan_ranges">neutron_ovs_vlan_ranges : {{form.neutron_ovs_vlan_dd}}<p>
+
+<p id="neutron_ovs_tunnel_ranges">neutron_ovs_tunnel_ranges : {{form.neutron_ovs_tunnel_dd}}<p>
+
+<p id="keyboard_layout">keyboard_layout : {{form.keyboard_layout_dd}}<p>
+
+<p id="dnsserver">dnsserver : {{form.dnsserver}}<p>
+
+<p id="host_ip">host_ip:<input type="text" name="host_ip_text"></p>
+
+<p id="host_uname">host_username:<input type="text" name="host_uname_text"></p>
+
+<p id="host_pwd">host_pwd:<input type="text" name="host_pwd_text"></p>
+
+<p id="controller_mac">controller_1_public_mac:<input type="text" name="controller_mac_text"></p>
+
+<p id="controller_mac1">controller_1_mgmt_mac1:<input type="text" name="controller_mac1_text"></p>
+
+<p id="controller_ip">controller_1_mgmt_ip:<input type="text" name="controller_ip_text"></p>
+
+<p id="controller1_mac1">controller_1_internal_traffic_mac1:<input type="text" name="controller1_mac1_text"></p>
+
+<p id="controller_hname">controller_1_host_name:<input type="text" name="controller_hname_text"></p>
+
+<p id="openstack_admin">openstack_admin_password:<input type="text" name="openstack_admin_text"></p>
+
+<p id="openstack_demo">openstack_demo_password:<input type="text" name="openstack_demo_password"></p>
+
+<p id="floatingip">floatingip_network:<input type="text" name="floatingip_text"></p>
+
+<p id="floating_sIP">floating_pool_start_IP:<input type="text" name="floating_sIP_text"></p>
+
+<p id="floating_eIP">floating_pool_end_IP:<input type="text" name="floating_eIP"></p>
+
+<p id="compute_1_enable_commission">compute_1_enable_commission: {{form.compute_1_enable_commission_dd}}<p>
+
+<p id="compute_mac">compute_1_public_mac:<input type="text" name="compute_mac_text"></p>
+
+<p id="compute_mac1">compute_1_mgmt_mac1:<input type="text" name="compute_mac1_text"></p>
+
+<p id="compute_ip">compute_1_mgmt_ip:<input type="text" name="compute_ip_text"></p>
+
+<p id="compute1_mac1">compute_1_internal_traffic_mac1:<input type="text" name="compute1_mac1_text"></p>
+
+<p id="compute_1_host_name">compute_1_host_name : {{form.compute_1_host_name_dd}}<p>
+
+<input type='submit' value='Submit'/>
+
+</form>
+
+</div>
+
+</body>
+</html>

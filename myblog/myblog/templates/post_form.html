@@ -1,0 +1,413 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title> One click cloud deployer </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+       	function test(){
+        $(document).ready(function(){
+                $("#menu_1").modal('toggle');
+        });
+	}
+        function test1()
+        {
+        $(document).ready(function(){
+                $("#menu_1").modal('toggle');
+                $("#menu_2").modal('toggle');
+        });
+        update_current_tab('menu_2','1')
+        }; 
+	function test2()
+        {
+        $(document).ready(function(){
+                $("#menu_2").modal('hide');
+                $("#menu_3").modal('show');
+        });
+        update_current_tab('menu_3','2') 
+        }; 
+	function test3()
+        {
+        $(document).ready(function(){
+                $("#menu_3").modal('hide');
+                $("#menu_4").modal('show');
+                $("#autoUpdate").hide(); 
+        });
+        update_current_tab('menu_4','3')
+        }; 
+	function test4()
+        {
+        $(document).ready(function(){
+                $("#menu_2").modal('hide');
+                $("#menu_1").modal('show');
+        });
+        }; 
+	function test5()
+        {
+        $(document).ready(function(){
+                $("#menu_3").modal('hide');
+                $("#menu_2").modal('show');
+        });
+       
+        }; 
+	function test6()
+        {
+        $(document).ready(function(){
+                $("#menu_4").modal('hide');
+                $("#menu_3").modal('show');
+        });
+        }; 
+        $(document).ready(function(){
+   	    $('#checkbox1').change(function(){
+        	if(this.checked)
+                    $('#autoUpdate').fadeIn('slow');
+        	else
+                    $('#autoUpdate').fadeOut('slow');
+
+    });
+    function test7()
+        {
+        $(document).ready(function(){
+                $('#autoUpdate').fadeOut('slow');
+        });
+        }; 
+    });
+    
+    $("#storage").click(function(){
+         //$("#menu_2").modal('show');
+	 alert('done');
+
+    });
+   
+    function update_current_tab(el,index)
+    {
+      var whichSet = document.getElementById(el);
+      whichSet.getElementsByTagName('li')[index].style.background = 'lightblue';
+      //alert('done');
+
+    }
+  function onpageload()
+  {
+     update_current_tab('menu_1','0');
+     
+     $('input').empty();
+  }
+</script>
+<style>
+.modal-content{
+   height:90%
+}
+.modal-dialog{
+   width:1000px;
+   height:600px;
+}
+.modal-body{
+   height:72%;
+}
+#center{
+        
+    height:100%;
+    width:100%;
+    float:left;
+}
+#side_bar
+{
+    height:80%;
+    width:22%;
+    text-align:left;
+    float:left;
+    display:inline-block;
+    padding: 3px;
+}
+#center_bar
+{
+    height:80%;
+    width:75%;
+    float:left;
+    display:inline-block;
+
+}
+a{
+   text-decoration:none;
+  
+}
+ul
+{
+    list-style-type: none;
+}
+
+li{
+   
+   border-radius:10px;
+   font-size:13px;
+   padding:5px;
+   width: 100%;
+   margin: 11px 0px;   
+}
+li:hover
+{
+   	
+   background:#E3E3E3;
+   padding:5px; 
+}
+
+
+
+
+li:hover a{
+   text-decoration:none;
+   color:black; 
+}
+table{
+width: 74%;
+margin-left: 6em;
+}
+td{
+padding: 5px;
+}
+
+
+</style>
+</head>
+<body onload="onpageload()">
+
+<br><br>
+<button type="button" class="btn btn-primary" onClick="test()">Click to deploy</button>
+<form action='/process_form_data' method='post'>{% csrf_token %}
+<div id="menu_1" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create a new OpenStack environment</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div id="center">  
+                     <br><br>
+                    <ul id="side_bar">
+                        <li id="pxe_server"><a href="#">PXE SERVER CONFIGURATION</a></li>
+                        
+                        <li id="storage"><a href="#">STORAGE BACKENDS</a></li> 
+                 	
+                 	<li id="ntw_conf"><a href="#">NETWORK CONFIGURATION</a></li>
+                 	
+                 	<li id ="openstack_conf"><a href="#">OPENSTACK DEPLOYMENT CONFIGURATION</a></li>                    
+                    </ul> 
+                    
+                    <div id="center_bar">
+			<table>
+			    <tr>
+                    		<td>External Management Interface</td>
+				<td><input  style="text" name="ext_mgmt_iface"></td>
+			    </tr>
+                    	    <tr>
+                                <td>NTW Management Subnet Mask</td>
+                                <td><input style="text" name="mgmt_subnet"></td>
+                            </tr>
+                            <tr>
+                                <td>External NTW Management IP</td>
+                                <td><input style="text" name="ext_ip"></td>
+                            </tr>
+
+			</table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onClick="test1('menu_2')">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_2" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create a new OpenStack environment</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="center">
+                     <br><br>
+                    <ul id="side_bar">
+                       <li id="pxe_server"> <a href="#" id="1">PXE SERVER CONFIGURATION</a></li>
+
+                        <li id="storage"><a href="#" id="2">STORAGE BACKENDS</a></li>
+
+                        <li id="ntw_conf"><a href="#" id="3">NETWORK CONFIGURATION</a></li>
+
+                        <li id="openstack_conf"><a href="#" id="4">OPENSTACK DEPLOYMENT CONFIGURATION</a></li>
+                    </ul>
+
+                    <div id="center_bar">
+                        <table>
+                            <tr>
+                                <td>Cinder Volume Group</td>
+                                <td><input  style="text" name="cinder_volume_group"></td>
+                            </tr>
+                            <tr>
+                                <td>Cinder Volume Group Percentage On Harddisk</td>
+                                <td><input style="text" name="cinder_vg_percentage_on_hdd"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+		<button type="button" class="btn btn-default" onClick="test4()">Previous</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onClick="test2()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_3" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create a new OpenStack environment</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="center">
+                     <br><br>
+                    <ul id="side_bar">
+                        <li id="pxe_server"><a href="#">PXE SERVER CONFIGURATION</a></li>
+
+                        <li id="storage"><a href="#">STORAGE BACKENDS</a></li>
+
+                        <li id="ntw_conf"><a href="#">NETWORK CONFIGURATION</a></li>
+
+                        <li id="openstack_conf"><a href="#">OPENSTACK DEPLOYMENT CONFIGURATION</a></li>
+                    </ul>
+
+                    <div id="center_bar">
+                        <table>
+                            <tr>
+                                <td>Neutron Ovs Tenant Network Type</td>
+                                <td><input  style="text" name="neutron_ovs_tenant_network_type"></td>
+                            </tr>
+                            <tr>
+                                <td>Neutron Ovs Tunnel Ranges</td>
+                                <td><input style="text" name="neutron_ovs_tunnel_ranges"></td>
+                            </tr>
+                            <tr>
+                                <td>DNS Server</td>
+                                <td><input style="text" name="dnsserver"></td>
+                            </tr>
+		            <tr>
+                                <td>Floating Pool Start IP</td>
+                                <td><input  style="text" name="floating_sIP"></td>
+                            </tr>
+                            <tr>
+                                <td>Floating Pool End IP</td>
+                                <td><input style="text" name="floating_eIP"></td>
+                            </tr>
+                            <tr>
+                                <td>Floating IP Network</td>
+                                <td><input style="text" name="floatingip"></td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+		<button type="button" class="btn btn-default" onClick="test5()">Previous</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onClick="test3()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_4" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create a new OpenStack environment</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="center">
+                     <br><br>
+                    <ul id="side_bar">
+                        <li id="pxe_server"><a href="#">PXE SERVER CONFIGURATION</a></li>
+
+                        <li id="storage"><a href="#">STORAGE BACKENDS</a></li>
+
+                        <li id="ntw_conf"><a href="#">NETWORK CONFIGURATION</a></li>
+
+                        <li id="openstack_conf"><a href="#">OPENSTACK DEPLOYMENT CONFIGURATION</a></li>
+                    </ul>
+
+                    <div id="center_bar">
+          		<div><input type="checkbox" id="checkbox1" name="all_in_one_node_deployment" >All In One Node Deploy</div>
+			<div>
+			<div id="autoUpdate">
+                        <table>
+                            <tr>
+                                <td>Controller1 Public Mac</td>
+                                <td><input  style="text" name="controller_mac"></td>
+                            </tr>
+                            <tr>
+                                <td>Controller1 Management Mac1</td>
+                                <td><input style="text" name="controller_mac1"></td>
+                            </tr>
+                            <tr>
+                                <td>Controller1 Management IP</td>
+                                <td><input style="text" name="controller_ip"></td>
+                            </tr>
+			    <tr>
+                                <td>Controller1 Internal Traffic Mac1</td>
+                                <td><input  style="text" name="controller1_mac1"></td>
+                            </tr>
+                            <tr>
+                                <td>Controller1 Hostname</td>
+                                <td><input style="text" name="controller_hname"></td>
+                            </tr>
+                            <tr>
+                                <td>Openstack Admin Password</td>
+                                <td><input style="text" name="openstack_admin"></td>
+                            </tr>
+			    <tr>
+                                <td>Openstack Demo Password</td>
+                                <td><input style="text" name="openstack_demo"></td>
+                            </tr>
+
+
+
+                        </table>
+			</div>
+			</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onClick="test6()">Previous</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</form>
+
+</body>
+</html>              
